@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="//polymer-project.org/platform.js"></script>
+    <link rel="import" href="//polymer-project.org/components/polymer/polymer.html">
+  </head>
+  <body>
+    <!-- 3. Declare the element. Configure using its attributes. -->
+    <core-ajax url="http://api.kptaipei.tw/v1/category/?accessToken=XXX"
+               handleAs="json"></core-ajax>
+
+    <script>
+      // Wait for 'polymer-ready'. Ensures the element is upgraded.
+      window.addEventListener('polymer-ready', function(e) {
+        var ajax = document.querySelector('core-ajax');
+
+        // Respond to events it fires.
+        ajax.addEventListener('core-response', function(e) {
+          console.log(this.response);
+        });
+
+        ajax.go(); // Call its API methods.
+      });
+    </script>
+  </body>
+</html>
